@@ -122,7 +122,7 @@ export default function Home() {
           <span>CA: Coming soon!</span>
         </div>
         <span className="text-[#41E2BA] mt-[100px] font-special text-[1.3em] uppercase tracking-[3px] ">
-          It's kinda dark and less energy here
+          It is kinda dark and less energy here
         </span>
         <span
           className="plug-in font-special text-[1.2em] mt-[20px] uppercase font-bold tracking-[4px]"
