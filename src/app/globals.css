@@ -422,6 +422,10 @@ body {
   top: 400px;
 }
 
+audio {
+  display: none;
+}
+
 .imgg3 {
   right: 10%;
   top: 45vh;

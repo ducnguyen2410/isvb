@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import background1 from "@/public/background1.jpg";
 import gif1 from "@/public/gif1 (1).gif";
 import gif2 from "@/public/gif1 (2).gif";
@@ -29,6 +29,31 @@ import dex from "@/public/dexx.png";
 //@ts-ignore
 export default function Home() {
   const [vibe, setVibe] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.play();
+    }
+  }, []);
+
+  const playAudio = () => {
+    if (audioRef.current) {
+      audioRef.current.play();
+    }
+  };
+
+  const pauseAudio = () => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+    }
+  };
+
+  const setVolume = (value: number) => {
+    if (audioRef.current) {
+      audioRef.current.volume = value;
+    }
+  };
 
   useEffect(() => {
     const scene = document.querySelector(".scene") as HTMLElement | null;
@@ -74,6 +99,7 @@ export default function Home() {
       const quote = document.querySelector(".quote");
       const gg2 = document.querySelector(".gg2");
       const ca = document.querySelector(".ca");
+      const vid = document.querySelector("audio");
       const texts = document.querySelectorAll(".header > span");
       if (
         mainClass instanceof HTMLElement &&
@@ -81,11 +107,13 @@ export default function Home() {
         introClass instanceof HTMLElement &&
         quote instanceof HTMLElement &&
         gg2 instanceof HTMLElement &&
-        ca instanceof HTMLElement
+        ca instanceof HTMLElement &&
+        vid instanceof HTMLElement
       ) {
         mainClass.style.opacity = "1";
         headerClass.style.opacity = "1";
         introClass.style.opacity = "1";
+        vid.style.display = "block";
         ca.style.opacity = "1";
         texts.forEach((te) => {
           if (te instanceof HTMLElement) {
@@ -106,6 +134,7 @@ export default function Home() {
 
   const activateEnergy = () => {
     setVibe(true);
+    playAudio();
   };
 
   return (
@@ -122,7 +151,7 @@ export default function Home() {
           <span>CA: Coming soon!</span>
         </div>
         <span className="text-[#41E2BA] mt-[100px] font-special text-[1.3em] uppercase tracking-[3px]">
-        You look bored, I can fix that.
+          You look bored, I can fix that.
         </span>
         <span
           className="plug-in font-special text-[1.2em] mt-[20px] uppercase font-bold tracking-[4px] cursor-pointer"
@@ -193,6 +222,13 @@ export default function Home() {
           </div>
         </div>
       )}
+      <audio ref={audioRef} controls autoPlay loop>
+        <source
+          src="/Interstellar Main Theme - Extra Extended - Soundtrack by  Hans Zimmer.mp3"
+          type="audio/mpeg"
+        />
+        Your browser does not support the audio element.
+      </audio>
     </div>
   );
 }
