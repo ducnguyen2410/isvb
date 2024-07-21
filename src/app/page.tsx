@@ -161,13 +161,13 @@ export default function Home() {
         </span>
         {vibe && (
           <div className="socials">
-            <a href="https://t.me/issa_vibee" target="_blank">
+            <a href="https://t.me/lssavibe" target="_blank">
               <Image alt="Telegram" src={telegram} />
             </a>
             <a href="https://x.com/lssavibee" target="_blank">
               <Image alt="Twitter" src={twitter} />
             </a>
-            <a href="https://t.me/issa_vibee" target="_blank">
+            <a href="https://t.me/lssavibe" target="_blank">
               <Image alt="Dex" src={dex} />
             </a>
           </div>
