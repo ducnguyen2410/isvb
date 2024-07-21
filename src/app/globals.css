@@ -417,13 +417,14 @@ body {
 }
 
 .imgg2 {
+  width: 200px;
   right: 0;
   top: 400px;
 }
 
 .imgg3 {
-  right: 40%;
-  top: 40vh;
+  right: 10%;
+  top: 45vh;
 }
 
 .imgg4 {

@@ -5,8 +5,8 @@ import background1 from "@/public/background1.jpg";
 import gif1 from "@/public/gif1 (1).gif";
 import gif2 from "@/public/gif1 (2).gif";
 import image1 from "@/public/cupid-removebg-preview.png";
-import image3 from "@/public/stoplight-removebg-preview.png";
-import image4 from "@/public/text-removebg-preview.png";
+import image3 from "@/public/7c.jpg";
+import image4 from "@/public/123-removebg-preview.png";
 import image5 from "@/public/vibe2-removebg-preview.png";
 import image6 from "@/public/vibe3-removebg-preview.png";
 import image7 from "@/public/vibe_window.jpg";
@@ -121,11 +121,11 @@ export default function Home() {
         <div className="ca">
           <span>CA: Coming soon!</span>
         </div>
-        <span className="text-[#41E2BA] mt-[100px] font-special text-[1.3em] uppercase tracking-[3px] ">
-          It is kinda dark and less energy here
+        <span className="text-[#41E2BA] mt-[100px] font-special text-[1.3em] uppercase tracking-[3px]">
+        You look bored, I can fix that.
         </span>
         <span
-          className="plug-in font-special text-[1.2em] mt-[20px] uppercase font-bold tracking-[4px]"
+          className="plug-in font-special text-[1.2em] mt-[20px] uppercase font-bold tracking-[4px] cursor-pointer"
           onClick={activateEnergy}
         >
           Vibe it up
@@ -145,7 +145,6 @@ export default function Home() {
         )}
       </div>
       <Image src={image1} alt="" className="imgtop imgg1" />
-      <Image src={image3} alt="" className="imgtop imgg2" />
       <Image src={image4} alt="" className="imgtop imgg3" />
       <Image src={image5} alt="" className="imgtop imgg4" />
       <Image src={image7} alt="" className="imgtop imgg6" />
