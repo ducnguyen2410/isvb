@@ -1,113 +1,199 @@
+"use client";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import background1 from "@/public/background1.jpg";
+import gif1 from "@/public/gif1 (1).gif";
+import gif2 from "@/public/gif1 (2).gif";
+import image1 from "@/public/cupid-removebg-preview.png";
+import image3 from "@/public/stoplight-removebg-preview.png";
+import image4 from "@/public/text-removebg-preview.png";
+import image5 from "@/public/vibe2-removebg-preview.png";
+import image6 from "@/public/vibe3-removebg-preview.png";
+import image7 from "@/public/vibe_window.jpg";
+import image8 from "@/public/wainbow-removebg-preview.png";
+import image11 from "@/public/i1.jpg";
+import image22 from "@/public/i2.jpg";
+import image33 from "@/public/i3.jpg";
+import image44 from "@/public/i4.jpg";
+import image55 from "@/public/i5.jpg";
+import image66 from "@/public/i6.jpg";
+import image77 from "@/public/i7.jpg";
+import image88 from "@/public/i8.jpg";
+import Matter from "matter-js";
+import p5 from "p5";
+import { random } from "gsap";
+import telegram from "@/public/Telegram_2019_Logo.svg-removebg-preview.png";
+import twitter from "@/public/twitter.webp";
+import dex from "@/public/dexx.png";
 
+//@ts-ignore
 export default function Home() {
+  const [vibe, setVibe] = useState(false);
+
+  useEffect(() => {
+    const scene = document.querySelector(".scene") as HTMLElement | null;
+
+    const CreateDiv = () => {
+      if (scene) {
+        for (let i = 0; i < 30; i++) {
+          const div = document.createElement("div");
+          div.className = "hell";
+          scene.appendChild(div);
+        }
+      }
+    };
+
+    CreateDiv();
+
+    const stars = document.querySelectorAll(".hell");
+
+    stars.forEach((star) => {
+      if (star instanceof HTMLElement) {
+        let x = `${Math.random() * 200}vmax`;
+        let y = `${Math.random() * 100}vh`;
+        let z = `${Math.random() * 200 - 100}vmin`;
+        let rx = `${Math.random() * 360}deg`;
+
+        star.style.setProperty("--x", x);
+        star.style.setProperty("--y", y);
+        star.style.setProperty("--z", z);
+        star.style.setProperty("--rx", rx);
+
+        let delay = `${Math.random() * 1.5}s`;
+        star.style.animationDelay = delay;
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    if (vibe) {
+      const mainClass = document.querySelector(".scene");
+      const headerClass = document.querySelector(".header");
+      const introClass = document.querySelector(".intro");
+      const imgTop = document.querySelectorAll(".imgtop");
+      const quote = document.querySelector(".quote");
+      const gg2 = document.querySelector(".gg2");
+      const ca = document.querySelector(".ca");
+      const texts = document.querySelectorAll(".header > span");
+      if (
+        mainClass instanceof HTMLElement &&
+        headerClass instanceof HTMLElement &&
+        introClass instanceof HTMLElement &&
+        quote instanceof HTMLElement &&
+        gg2 instanceof HTMLElement &&
+        ca instanceof HTMLElement
+      ) {
+        mainClass.style.opacity = "1";
+        headerClass.style.opacity = "1";
+        introClass.style.opacity = "1";
+        ca.style.opacity = "1";
+        texts.forEach((te) => {
+          if (te instanceof HTMLElement) {
+            te.style.display = "none";
+          }
+        });
+        imgTop.forEach((imgTo) => {
+          if (imgTo instanceof HTMLElement) {
+            imgTo.style.opacity = "1";
+          }
+        });
+        setTimeout(() => {
+          gg2.style.opacity = "1";
+        }, 2500);
+      }
+    }
+  }, [vibe]);
+
+  const activateEnergy = () => {
+    setVibe(true);
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="h-screen overflow-auto relative">
+      <main className="scene flex flex-col gap-[100px]"></main>
+      <div className="header w-full flex flex-col items-center mt-[20vh] absolute top-[0] left-[0]">
+        <div className="intro relative w-[100%] flex justify-center">
+          <Image src={background1} alt="" className="background1" />
+          <Image src={gif1} alt="" className="gif1" />
+          <Image src={gif2} alt="" className="gif2" />
+          <span className="ticker">ISSA VIBE</span>
         </div>
+        <div className="ca">
+          <span>CA: Coming soon!</span>
+        </div>
+        <span className="text-[#41E2BA] mt-[100px] font-special text-[1.3em] uppercase tracking-[3px] ">
+          It's kinda dark and less energy here
+        </span>
+        <span
+          className="plug-in font-special text-[1.2em] mt-[20px] uppercase font-bold tracking-[4px]"
+          onClick={activateEnergy}
+        >
+          Vibe it up
+        </span>
+        {vibe && (
+          <div className="socials">
+            <a href="" target="_blank">
+              <Image alt="Telegram" src={telegram} />
+            </a>
+            <a href="" target="_blank">
+              <Image alt="Twitter" src={twitter} />
+            </a>
+            <a href="" target="_blank">
+              <Image alt="Dex" src={dex} />
+            </a>
+          </div>
+        )}
       </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
+      <Image src={image1} alt="" className="imgtop imgg1" />
+      <Image src={image3} alt="" className="imgtop imgg2" />
+      <Image src={image4} alt="" className="imgtop imgg3" />
+      <Image src={image5} alt="" className="imgtop imgg4" />
+      <Image src={image7} alt="" className="imgtop imgg6" />
+      <Image src={image8} alt="" className="imgtop imgg7" />
+      {vibe && (
+        <div>
+          <div className="flex flex-col items-center">
+            <div className="w-[10px] h-[45vh] bg-black relative straight-line"></div>
+            <div className="gg2 w-[90vw] h-[100vh] main-content">
+              <span>Positive minds, positive vibes.</span>
+              <span>Give this world a good energy.</span>
+              <span>Good vibes only attract positive outcomes.</span>
+              <span>Nobody can control the dream they have.</span>
+              <span>You make my life better.</span>
+              <span>Just me, $VIBE and the night</span>
+              <div className="item item1">
+                <Image src={image11} alt="" className="img" />
+              </div>
+              <div className="item item2">
+                <Image src={image22} alt="" className="img" />
+              </div>
+              <div className="item item3">
+                <Image src={image33} alt="" className="img" />
+              </div>
+              <div className="item item4">
+                <Image src={image44} alt="" className="img" />
+              </div>
+              <div className="item item5">
+                <Image src={image55} alt="" className="img" />
+              </div>
+              <div className="item item6">
+                <Image src={image66} alt="" className="img" />
+              </div>
+              <div className="item item7">
+                <Image src={image77} alt="" className="img" />
+              </div>
+              <div className="item item8">
+                <Image src={image88} alt="" className="img" />
+              </div>
+            </div>
+          </div>
+          <div className="quote mb-[50px] h-[20vh] flex items-center justify-center">
+            <span className="text-[2em] tracking-[3px] text-[#A85751] uppercase font-[600] italic">
+              When you make it? Issa vibe baby!
             </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }

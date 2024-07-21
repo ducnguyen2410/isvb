@@ -16,7 +16,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} bg-black overflow-auto`}>
+        {children}
+        <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.js"
+          integrity="sha512-pdHIQH5GDrd5eTHck+rfKnQhgRjKYtSw8UCQ9blobxwzQhE9LXLw5aTk78ktWY526mS0EwIcaJ/fROeIzHD34w=="
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
+        ></script>
+      </body>
     </html>
   );
 }
